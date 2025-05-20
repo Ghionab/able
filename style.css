@@ -136,178 +136,234 @@ header {
 
 /* Hero Section */
 .hero-section {
-    padding: 100px 0; /* More vertical space */
-    background-color: transparent; /* Rely on body background */
+    padding-top: 100px;
+    padding-bottom: 120px; /* **Ensured: Larger space below hero section** */
+    background-color: transparent;
     position: relative;
-    z-index: 1; /* Ensure content is above any background animations */
+    z-index: 1;
 }
 
-.hero-content-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 80px; /* More space between text and image */
+/* Modified hero-content-wrapper for single column */
+.hero-content-wrapper.single-column {
+    flex-direction: column;
+    align-items: center; /* Ensures everything is centered horizontally */
+    gap: 0;
 }
 
 .hero-text-block {
-    flex: 1;
-    max-width: 60%; /* Allow text block to be a bit wider */
+    flex: unset;
+    max-width: 900px;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; /* Center align text within this block */
 }
 
 .hero-text-block h1 {
-    font-size: 64px; /* Even larger heading */
-    font-weight: 800; /* Extra bold */
+    font-size: 64px;
+    font-weight: 800;
     color: var(--dark-text);
     margin-bottom: 25px;
     line-height: 1.1;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.05); /* Subtle text shadow */
-    overflow: hidden; /* For word reveal effect */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden;
 }
 
 .hero-text-block h1 .word-reveal {
-    display: inline-block; /* Essential for individual word animation */
-    /* GSAP will handle initial opacity and transform */
+    display: inline-block;
 }
 
 .hero-text-block p {
-    font-size: 20px; /* Larger paragraph */
+    font-size: 20px;
     color: var(--light-text);
     margin-bottom: 50px;
-    max-width: 600px;
+    max-width: 700px;
     line-height: 1.7;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-btn {
-    padding: 18px 45px; /* Even larger button */
+    padding: 18px 45px;
     font-size: 20px;
+    margin-bottom: 0;
 }
 
-/* Hero Image Container */
-.hero-image-container {
-    flex-shrink: 0;
-    width: 450px; /* Larger image area */
-    height: 450px;
-    background-color: var(--background-medium); /* Background color for the container */
-    border-radius: 50px; /* More pronounced rounded corners */
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 15px 40px var(--shadow-medium); /* Deeper shadow */
-    position: relative;
-
-    border: 5px solid var(--accent-color); /* A vibrant border around the container */
-    /* Initial animation state handled by GSAP */
+/* NEW SECTION: Principles Section Styling */
+.principles-section {
+    background-color: var(--card-background);
+    padding: 80px 0;
+    margin-bottom: 100px; /* **Ensured: Increased space below principles section** */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    width: 90%;
+    transform: translateY(0);
+    opacity: 1;
 }
 
-.hero-image-container::before {
-    /* Subtle background pattern - you can use a real image or a more complex SVG */
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><g fill="%23c9c9d9" fill-opacity="0.2"><path fill-rule="evenodd" d="M0 0h4v4H0V0zm4 4h4v4H4V4z"/></g></svg>');
-    background-repeat: repeat;
-    opacity: 0.5;
-    border-radius: 50px; /* Match container border-radius */
-    z-index: 0;
-    animation: patternPulse 5s ease-in-out infinite alternate; /* Animate the pattern */
+.principles-heading {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 50px;
 }
 
-@keyframes patternPulse {
-    from { opacity: 0.3; }
-    to { opacity: 0.6; }
-}
-
-
-.hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 40px; /* Slightly less than container for internal curve */
-    position: relative;
-    z-index: 1; /* Ensure image is above pseudo-element */
-    /* Add a subtle inner shadow/border effect to the image itself */
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-}
-
-/* Statistics Section */
-.stats-section {
-    padding: 80px 0 100px; /* More padding */
-    background-color: var(--background-light); /* Or slightly different shade */
-}
-
-.stats-wrapper {
-    display: flex;
-    justify-content: space-around;
-    gap: 40px; /* More space between items */
+.principles-content {
+    max-width: 800px;
+    margin: 0 auto;
     text-align: center;
 }
 
-.stat-item {
+.principles-paragraph {
+    font-size: 19px;
+    color: var(--dark-text);
+    line-height: 1.8;
+    margin-bottom: 35px;
+    font-weight: 400;
+}
+
+.principles-paragraph:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Objectives Section (Replaces old Stats Section) */
+.objectives-section {
+    padding: 80px 0;
+    background-color: var(--background-light);
+    text-align: center;
+}
+
+.objectives-heading {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 60px;
+}
+
+.objectives-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.objective-item {
     flex: 1;
-    background-color: var(--card-background); /* Card background */
-    padding: 40px 20px; /* More padding */
-    border-radius: 15px; /* Rounded card corners */
-    box-shadow: 0 8px 25px var(--shadow-light); /* Card shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect */
+    min-width: 280px;
+    max-width: 350px;
+    background-color: var(--card-background);
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px var(--shadow-light);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.stat-item:hover {
-    transform: translateY(-10px) scale(1.02); /* Lift and slight scale on hover */
-    box-shadow: 0 15px 35px var(--shadow-medium); /* Stronger shadow on hover */
+.objective-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px var(--shadow-medium);
 }
 
-
-.stat-number {
-    font-size: 72px; /* Very large number */
-    font-weight: 800; /* Extra bold */
-    color: var(--primary-color); /* Primary color for numbers */
-    margin-bottom: 10px;
-    line-height: 1; /* Tighter line height */
+.objective-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
 }
 
-.stat-description {
-    font-size: 20px; /* Larger description */
-    color: var(--light-text);
-    font-weight: 600; /* Semi-bold */
+.objective-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 2;
 }
+
+.objective-text {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.6;
+    text-align: center;
+    font-weight: 500;
+}
+
 
 /* Basic Responsiveness */
 @media (max-width: 1024px) {
-    .hero-content-wrapper {
-        flex-direction: column;
-        text-align: center;
-        gap: 50px;
-    }
-    .hero-text-block {
-        max-width: 90%;
-        padding-right: 0;
+    .hero-section {
+        padding-top: 80px; /* Reduced top padding */
+        padding-bottom: 100px; /* Slightly adjusted padding */
     }
     .hero-text-block h1 {
-        font-size: 52px;
+        font-size: 50px; /* Slightly smaller on medium screens */
     }
-    .hero-image-container {
-        width: 380px;
-        height: 380px;
+    .hero-text-block p {
+        font-size: 19px;
     }
-    .stats-wrapper {
-        flex-wrap: wrap; /* Allow stats to wrap */
-        justify-content: center;
+    .hero-btn {
+        font-size: 19px;
     }
-    .stat-item {
-        flex: unset; /* Remove flex grow */
-        width: 45%; /* Two columns */
+    .principles-section {
+        padding: 60px 0;
+        margin-bottom: 80px;
+        width: 95%;
+    }
+    .principles-heading {
+        font-size: 36px; /* Adjusted heading size */
+        margin-bottom: 40px;
+    }
+    .principles-content {
+        max-width: 90%;
+    }
+    .principles-paragraph {
+        font-size: 17px;
         margin-bottom: 30px;
+    }
+    .objectives-section {
+        padding: 70px 0; /* Adjusted padding */
+    }
+    .objectives-heading {
+        font-size: 32px; /* Adjusted heading size */
+        margin-bottom: 50px; /* Adjusted spacing */
+    }
+    .objectives-list {
+        gap: 30px;
+    }
+    .objective-item {
+        min-width: 280px; /* Maintain good width */
+        max-width: 45%; /* Allow two columns on wider tablets */
+        padding: 35px 25px;
+    }
+    .objective-icon {
+        width: 45px; /* Slightly smaller icon */
+        height: 45px;
+        margin-bottom: 18px;
+    }
+    .objective-text {
+        font-size: 17px;
     }
 }
 
 @media (max-width: 768px) {
     .header-content {
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center horizontally */
     }
     .logo {
         margin-bottom: 15px;
@@ -327,65 +383,126 @@ header {
     .btn.primary-btn {
         margin-top: 15px;
     }
+
+    .hero-section {
+        padding-top: 60px; /* More subtle padding on smaller screens */
+        padding-bottom: 80px; /* Adjusted spacing */
+    }
     .hero-text-block h1 {
-        font-size: 44px;
+        font-size: 40px; /* Further reduced for tablets */
+        margin-bottom: 20px;
     }
     .hero-text-block p {
-        font-size: 18px;
+        font-size: 17px;
+        margin-bottom: 40px;
     }
     .hero-btn {
-        padding: 15px 35px;
-        font-size: 18px;
+        padding: 14px 30px;
+        font-size: 17px;
     }
-    .hero-image-container {
-        width: 300px;
-        height: 300px;
+
+    .principles-section {
+        padding: 50px 0;
+        margin-bottom: 60px;
+        width: 90%;
     }
-    .stats-wrapper {
-        flex-direction: column; /* Stack stats vertically */
-        align-items: center;
+    .principles-heading {
+        font-size: 30px;
+        margin-bottom: 35px;
     }
-    .stat-item {
-        width: 90%; /* Almost full width */
-        max-width: 350px;
+    .principles-paragraph {
+        font-size: 16px;
+        margin-bottom: 25px;
     }
-    .stat-number {
-        font-size: 60px;
+
+    .objectives-section {
+        padding: 60px 0;
     }
-    .stat-description {
-        font-size: 18px;
+    .objectives-heading {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+    .objectives-list {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center stacked items */
+        gap: 30px;
+    }
+    .objective-item {
+        width: 90%; /* Take up more width */
+        max-width: 450px; /* Max width to prevent stretching too wide */
+        padding: 30px 25px;
+    }
+    .objective-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 15px;
+    }
+    .objective-text {
+        font-size: 16px;
     }
 }
 
 @media (max-width: 480px) {
     .logo {
-        font-size: 28px;
+        font-size: 26px; /* Smaller logo */
     }
     .main-nav li {
-        margin: 0 10px 8px;
+        margin: 0 10px 8px; /* Tighter navigation */
+    }
+    .main-nav a {
+        font-size: 16px;
+    }
+    .btn {
+        padding: 10px 25px; /* Smaller buttons */
+        font-size: 16px;
+    }
+
+    .hero-section {
+        padding-top: 40px; /* Even less padding */
+        padding-bottom: 60px; /* Adjusted for smaller screens */
     }
     .hero-text-block h1 {
-        font-size: 36px;
+        font-size: 32px; /* Smallest heading size */
+        margin-bottom: 15px;
     }
     .hero-text-block p {
-        font-size: 16px;
+        font-size: 15px;
+        margin-bottom: 30px;
     }
     .hero-btn {
-        padding: 12px 30px;
+        padding: 12px 25px;
         font-size: 16px;
     }
-    .hero-image-container {
-        width: 250px;
-        height: 250px;
-        border-radius: 30px;
+
+    .principles-section {
+        padding: 40px 0;
+        margin-bottom: 40px;
     }
-    .hero-image-container::before {
-        border-radius: 30px;
+    .principles-heading {
+        font-size: 26px;
+        margin-bottom: 25px;
     }
-    .stat-number {
-        font-size: 50px;
+    .principles-paragraph {
+        font-size: 15px;
+        margin-bottom: 20px;
     }
-    .stat-description {
-        font-size: 16px;
+
+    .objectives-section {
+        padding: 40px 0;
+    }
+    .objectives-heading {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .objective-item {
+        padding: 25px 20px;
+    }
+    .objective-icon {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 10px;
+    }
+    .objective-text {
+        font-size: 15px;
     }
 }
