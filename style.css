@@ -67,6 +67,10 @@ header {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Subtle text shadow */
 }
 
+.main-nav { /* Desktop nav */
+    display: block; /* Default for desktop */
+}
+
 .main-nav ul {
     list-style: none;
     margin: 0;
@@ -108,45 +112,138 @@ header {
 }
 
 
+/* Hamburger Menu Icon */
+.hamburger-menu {
+    width: 30px;
+    height: 20px;
+    display: none; /* Hidden by default, shown on mobile */
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001; /* Above header */
+    transition: transform 0.3s ease;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-text);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger active state (for X animation) */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color); /* Full screen overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* Start off-screen to the right */
+    transition: transform 0.4s ease-in-out;
+    z-index: 999; /* Below hamburger but above content */
+    opacity: 0; /* Start hidden */
+    visibility: hidden;
+}
+
+.mobile-nav-overlay.open {
+    transform: translateX(0); /* Slide in */
+    opacity: 1; /* Fade in */
+    visibility: visible;
+}
+
+.mobile-nav-overlay ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    width: 80%; /* Constrain width of links */
+}
+
+.mobile-nav-overlay li {
+    margin-bottom: 30px; /* Space out links */
+}
+
+.mobile-nav-overlay a {
+    text-decoration: none;
+    color: #ffffff; /* White text on purple background */
+    font-size: 28px; /* Large mobile links */
+    font-weight: 600;
+    transition: color 0.3s ease;
+    display: block; /* Make link block to fill width */
+    padding: 10px 0;
+}
+
+.mobile-nav-overlay a:hover {
+    color: var(--accent-color); /* Lighter accent on hover */
+}
+
+.mobile-contact-btn {
+    width: 100%; /* Full width button */
+    margin-top: 20px;
+    background-image: linear-gradient(45deg, #ffffff 0%, #f0f0f0 100%); /* Lighter gradient for contact button */
+    color: var(--primary-color);
+}
+
+.mobile-contact-btn:hover {
+    background-image: linear-gradient(45deg, #f0f0f0 0%, #e0e0e0 100%);
+    color: var(--primary-color);
+}
+
+
 /* Buttons */
 .btn {
-    padding: 12px 30px; /* Increased padding */
+    padding: 12px 30px;
     border: none;
-    border-radius: 8px; /* More rounded */
+    border-radius: 8px;
     cursor: pointer;
     font-size: 17px;
     font-weight: 700;
-    box-shadow: 0 4px 15px var(--shadow-light); /* Button shadow */
+    box-shadow: 0 4px 15px var(--shadow-light);
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 .primary-btn {
     background-color: var(--primary-color);
     color: #ffffff;
-    /* Adding a subtle gradient */
     background-image: linear-gradient(45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
 }
 
 .primary-btn:hover {
     background-color: var(--secondary-color);
-    transform: translateY(-3px) scale(1.02); /* Lift and slight scale */
-    box-shadow: 0 8px 20px var(--shadow-medium); /* Stronger shadow on hover */
-    background-image: linear-gradient(45deg, var(--secondary-color) 0%, var(--primary-color) 100%); /* Invert gradient */
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    background-image: linear-gradient(45deg, var(--secondary-color) 0%, var(--primary-color) 100%);
 }
 
 /* Hero Section */
 .hero-section {
     padding-top: 100px;
-    padding-bottom: 120px; /* **Ensured: Larger space below hero section** */
+    padding-bottom: 120px;
     background-color: transparent;
     position: relative;
     z-index: 1;
 }
 
-/* Modified hero-content-wrapper for single column */
 .hero-content-wrapper.single-column {
     flex-direction: column;
-    align-items: center; /* Ensures everything is centered horizontally */
+    align-items: center;
     gap: 0;
 }
 
@@ -156,7 +253,7 @@ header {
     padding-right: 0;
     margin-left: auto;
     margin-right: auto;
-    text-align: center; /* Center align text within this block */
+    text-align: center;
 }
 
 .hero-text-block h1 {
@@ -193,7 +290,7 @@ header {
 .principles-section {
     background-color: var(--card-background);
     padding: 80px 0;
-    margin-bottom: 100px; /* **Ensured: Increased space below principles section** */
+    margin-bottom: 100px;
     border-radius: 15px;
     box-shadow: 0 10px 30px var(--shadow-medium);
     margin-left: auto;
@@ -215,7 +312,7 @@ header {
 .principles-content {
     max-width: 800px;
     margin: 0 auto;
-    text-align: center;
+    text-align: left; /* **Changed: Left align principles text** */
 }
 
 .principles-paragraph {
@@ -231,7 +328,7 @@ header {
 }
 
 
-/* Objectives Section (Replaces old Stats Section) */
+/* Objectives Section */
 .objectives-section {
     padding: 80px 0;
     background-color: var(--background-light);
@@ -304,14 +401,16 @@ header {
 }
 
 
-/* Basic Responsiveness */
+/* Media Queries for Responsiveness */
+
+/* Large Tablets and Laptops (1024px) */
 @media (max-width: 1024px) {
     .hero-section {
-        padding-top: 80px; /* Reduced top padding */
-        padding-bottom: 100px; /* Slightly adjusted padding */
+        padding-top: 80px;
+        padding-bottom: 100px;
     }
     .hero-text-block h1 {
-        font-size: 50px; /* Slightly smaller on medium screens */
+        font-size: 50px;
     }
     .hero-text-block p {
         font-size: 19px;
@@ -325,7 +424,7 @@ header {
         width: 95%;
     }
     .principles-heading {
-        font-size: 36px; /* Adjusted heading size */
+        font-size: 36px;
         margin-bottom: 40px;
     }
     .principles-content {
@@ -336,22 +435,22 @@ header {
         margin-bottom: 30px;
     }
     .objectives-section {
-        padding: 70px 0; /* Adjusted padding */
+        padding: 70px 0;
     }
     .objectives-heading {
-        font-size: 32px; /* Adjusted heading size */
-        margin-bottom: 50px; /* Adjusted spacing */
+        font-size: 32px;
+        margin-bottom: 50px;
     }
     .objectives-list {
         gap: 30px;
     }
     .objective-item {
-        min-width: 280px; /* Maintain good width */
-        max-width: 45%; /* Allow two columns on wider tablets */
+        min-width: 280px;
+        max-width: 45%;
         padding: 35px 25px;
     }
     .objective-icon {
-        width: 45px; /* Slightly smaller icon */
+        width: 45px;
         height: 45px;
         margin-bottom: 18px;
     }
@@ -360,36 +459,25 @@ header {
     }
 }
 
+/* Tablets (768px) - Major changes for header responsiveness */
 @media (max-width: 768px) {
     .header-content {
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center horizontally */
+        justify-content: space-between; /* Keep logo and hamburger at ends */
+        align-items: center;
     }
-    .logo {
-        margin-bottom: 15px;
+    .main-nav, .desktop-btn { /* Hide desktop nav and button */
+        display: none;
     }
-    .main-nav {
-        margin-top: 15px;
-        width: 100%;
-        justify-content: center;
-    }
-    .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .main-nav li {
-        margin: 0 15px 10px;
-    }
-    .btn.primary-btn {
-        margin-top: 15px;
+    .hamburger-menu { /* Show hamburger icon */
+        display: flex;
     }
 
     .hero-section {
-        padding-top: 60px; /* More subtle padding on smaller screens */
-        padding-bottom: 80px; /* Adjusted spacing */
+        padding-top: 60px;
+        padding-bottom: 80px;
     }
     .hero-text-block h1 {
-        font-size: 40px; /* Further reduced for tablets */
+        font-size: 40px;
         margin-bottom: 20px;
     }
     .hero-text-block p {
@@ -410,6 +498,9 @@ header {
         font-size: 30px;
         margin-bottom: 35px;
     }
+    .principles-content {
+        /* No change here, remains text-align: left */
+    }
     .principles-paragraph {
         font-size: 16px;
         margin-bottom: 25px;
@@ -423,13 +514,13 @@ header {
         margin-bottom: 40px;
     }
     .objectives-list {
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center stacked items */
+        flex-direction: column;
+        align-items: center;
         gap: 30px;
     }
     .objective-item {
-        width: 90%; /* Take up more width */
-        max-width: 450px; /* Max width to prevent stretching too wide */
+        width: 90%;
+        max-width: 450px;
         padding: 30px 25px;
     }
     .objective-icon {
@@ -442,27 +533,19 @@ header {
     }
 }
 
+/* Mobile Phones (480px) */
 @media (max-width: 480px) {
     .logo {
-        font-size: 26px; /* Smaller logo */
+        font-size: 26px;
     }
-    .main-nav li {
-        margin: 0 10px 8px; /* Tighter navigation */
-    }
-    .main-nav a {
-        font-size: 16px;
-    }
-    .btn {
-        padding: 10px 25px; /* Smaller buttons */
-        font-size: 16px;
-    }
+    /* Header remains hidden on these smaller sizes */
 
     .hero-section {
-        padding-top: 40px; /* Even less padding */
-        padding-bottom: 60px; /* Adjusted for smaller screens */
+        padding-top: 40px;
+        padding-bottom: 60px;
     }
     .hero-text-block h1 {
-        font-size: 32px; /* Smallest heading size */
+        font-size: 32px;
         margin-bottom: 15px;
     }
     .hero-text-block p {
