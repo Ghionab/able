@@ -1,0 +1,391 @@
+/* --- Variables (Easier to manage colors) --- */
+:root {
+    --primary-color: #5d42a0; /* A rich purple */
+    --secondary-color: #8c71d1; /* Lighter purple */
+    --accent-color: #a788e0; /* Even lighter for highlights */
+    --dark-text: #2c2c3e;
+    --light-text: #6a6a8a;
+    --background-light: #f8f8fc;
+    --background-medium: #eaeaef;
+    --card-background: #ffffff;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+}
+
+/* Universal Styles & Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--dark-text);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll on animations */
+    background-color: var(--background-light); /* Default background */
+}
+
+/* Animated Background (Body) */
+.animated-background {
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--background-medium) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--card-background);
+    padding: 15px 0;
+    box-shadow: 0 4px 15px var(--shadow-light); /* Stronger header shadow */
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000; /* Ensure it's on top */
+    transition: background-color 0.3s ease;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 32px; /* Slightly larger */
+    font-weight: 800; /* Extra bold */
+    color: var(--primary-color); /* Use primary color */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Subtle text shadow */
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.main-nav li {
+    margin-right: 40px; /* More space */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--light-text);
+    font-size: 17px; /* Slightly larger */
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px; /* Thicker underline */
+    background-color: var(--primary-color); /* Color underline */
+    left: 50%;
+    bottom: -8px; /* Lower underline */
+    transform: translateX(-50%);
+    transition: width 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce effect */
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+
+/* Buttons */
+.btn {
+    padding: 12px 30px; /* Increased padding */
+    border: none;
+    border-radius: 8px; /* More rounded */
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px var(--shadow-light); /* Button shadow */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    /* Adding a subtle gradient */
+    background-image: linear-gradient(45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.primary-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px) scale(1.02); /* Lift and slight scale */
+    box-shadow: 0 8px 20px var(--shadow-medium); /* Stronger shadow on hover */
+    background-image: linear-gradient(45deg, var(--secondary-color) 0%, var(--primary-color) 100%); /* Invert gradient */
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 100px 0; /* More vertical space */
+    background-color: transparent; /* Rely on body background */
+    position: relative;
+    z-index: 1; /* Ensure content is above any background animations */
+}
+
+.hero-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px; /* More space between text and image */
+}
+
+.hero-text-block {
+    flex: 1;
+    max-width: 60%; /* Allow text block to be a bit wider */
+}
+
+.hero-text-block h1 {
+    font-size: 64px; /* Even larger heading */
+    font-weight: 800; /* Extra bold */
+    color: var(--dark-text);
+    margin-bottom: 25px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.05); /* Subtle text shadow */
+    overflow: hidden; /* For word reveal effect */
+}
+
+.hero-text-block h1 .word-reveal {
+    display: inline-block; /* Essential for individual word animation */
+    /* GSAP will handle initial opacity and transform */
+}
+
+.hero-text-block p {
+    font-size: 20px; /* Larger paragraph */
+    color: var(--light-text);
+    margin-bottom: 50px;
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+.hero-btn {
+    padding: 18px 45px; /* Even larger button */
+    font-size: 20px;
+}
+
+/* Hero Image Container */
+.hero-image-container {
+    flex-shrink: 0;
+    width: 450px; /* Larger image area */
+    height: 450px;
+    background-color: var(--background-medium); /* Background color for the container */
+    border-radius: 50px; /* More pronounced rounded corners */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 15px 40px var(--shadow-medium); /* Deeper shadow */
+    position: relative;
+
+    border: 5px solid var(--accent-color); /* A vibrant border around the container */
+    /* Initial animation state handled by GSAP */
+}
+
+.hero-image-container::before {
+    /* Subtle background pattern - you can use a real image or a more complex SVG */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><g fill="%23c9c9d9" fill-opacity="0.2"><path fill-rule="evenodd" d="M0 0h4v4H0V0zm4 4h4v4H4V4z"/></g></svg>');
+    background-repeat: repeat;
+    opacity: 0.5;
+    border-radius: 50px; /* Match container border-radius */
+    z-index: 0;
+    animation: patternPulse 5s ease-in-out infinite alternate; /* Animate the pattern */
+}
+
+@keyframes patternPulse {
+    from { opacity: 0.3; }
+    to { opacity: 0.6; }
+}
+
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 40px; /* Slightly less than container for internal curve */
+    position: relative;
+    z-index: 1; /* Ensure image is above pseudo-element */
+    /* Add a subtle inner shadow/border effect to the image itself */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Statistics Section */
+.stats-section {
+    padding: 80px 0 100px; /* More padding */
+    background-color: var(--background-light); /* Or slightly different shade */
+}
+
+.stats-wrapper {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px; /* More space between items */
+    text-align: center;
+}
+
+.stat-item {
+    flex: 1;
+    background-color: var(--card-background); /* Card background */
+    padding: 40px 20px; /* More padding */
+    border-radius: 15px; /* Rounded card corners */
+    box-shadow: 0 8px 25px var(--shadow-light); /* Card shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect */
+}
+
+.stat-item:hover {
+    transform: translateY(-10px) scale(1.02); /* Lift and slight scale on hover */
+    box-shadow: 0 15px 35px var(--shadow-medium); /* Stronger shadow on hover */
+}
+
+
+.stat-number {
+    font-size: 72px; /* Very large number */
+    font-weight: 800; /* Extra bold */
+    color: var(--primary-color); /* Primary color for numbers */
+    margin-bottom: 10px;
+    line-height: 1; /* Tighter line height */
+}
+
+.stat-description {
+    font-size: 20px; /* Larger description */
+    color: var(--light-text);
+    font-weight: 600; /* Semi-bold */
+}
+
+/* Basic Responsiveness */
+@media (max-width: 1024px) {
+    .hero-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 50px;
+    }
+    .hero-text-block {
+        max-width: 90%;
+        padding-right: 0;
+    }
+    .hero-text-block h1 {
+        font-size: 52px;
+    }
+    .hero-image-container {
+        width: 380px;
+        height: 380px;
+    }
+    .stats-wrapper {
+        flex-wrap: wrap; /* Allow stats to wrap */
+        justify-content: center;
+    }
+    .stat-item {
+        flex: unset; /* Remove flex grow */
+        width: 45%; /* Two columns */
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .logo {
+        margin-bottom: 15px;
+    }
+    .main-nav {
+        margin-top: 15px;
+        width: 100%;
+        justify-content: center;
+    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .main-nav li {
+        margin: 0 15px 10px;
+    }
+    .btn.primary-btn {
+        margin-top: 15px;
+    }
+    .hero-text-block h1 {
+        font-size: 44px;
+    }
+    .hero-text-block p {
+        font-size: 18px;
+    }
+    .hero-btn {
+        padding: 15px 35px;
+        font-size: 18px;
+    }
+    .hero-image-container {
+        width: 300px;
+        height: 300px;
+    }
+    .stats-wrapper {
+        flex-direction: column; /* Stack stats vertically */
+        align-items: center;
+    }
+    .stat-item {
+        width: 90%; /* Almost full width */
+        max-width: 350px;
+    }
+    .stat-number {
+        font-size: 60px;
+    }
+    .stat-description {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 28px;
+    }
+    .main-nav li {
+        margin: 0 10px 8px;
+    }
+    .hero-text-block h1 {
+        font-size: 36px;
+    }
+    .hero-text-block p {
+        font-size: 16px;
+    }
+    .hero-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+    .hero-image-container {
+        width: 250px;
+        height: 250px;
+        border-radius: 30px;
+    }
+    .hero-image-container::before {
+        border-radius: 30px;
+    }
+    .stat-number {
+        font-size: 50px;
+    }
+    .stat-description {
+        font-size: 16px;
+    }
+}
