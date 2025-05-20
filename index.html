@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abrsh - Professional Problem Solver</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="animated-background">
+    <header>
+        <div class="container header-content">
+            <div class="logo">Abrsh</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Service</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </nav>
+            <button class="btn primary-btn">Hire Me</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="container hero-content-wrapper">
+                <div class="hero-text-block">
+                    <h1>
+                        <span class="word-reveal">Your</span>
+                        <span class="word-reveal">Professional</span>
+                        <span class="word-reveal">Problem</span>
+                        <span class="word-reveal">Solver</span>
+                    </h1>
+                    <p class="fade-in-on-load">I specialize in solving solutions for tech companies and small businesses.</p>
+                    <button class="btn primary-btn hero-btn fade-in-on-load">Hire Me</button>
+                </div>
+                <div class="hero-image-container">
+                    <img src="your-image.jpg" alt="Professional Solver" class="hero-image">
+                    </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="container stats-wrapper">
+                <div class="stat-item">
+                    <div class="stat-number">22 Years</div>
+                    <div class="stat-description">Of Experience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">110+</div>
+                    <div class="stat-description">Projects Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-description">Satisfaction</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // GSAP Animations (JavaScript)
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Heading Word Reveal
+        gsap.from(".word-reveal", {
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            stagger: 0.15, // Stagger words
+            delay: 0.5 // Start after initial load
+        });
+
+        // Hero Paragraph & Button Fade In
+        gsap.from(".hero-text-block .fade-in-on-load", {
+            opacity: 0,
+            y: 20,
+            duration: 1,
+            ease: "power2.out",
+            delay: 1.2, // After words
+            stagger: 0.2
+        });
+
+
+        // Hero Image Fade In & Float
+        gsap.from(".hero-image-container", {
+            opacity: 0,
+            scale: 0.9,
+            duration: 1.5,
+            ease: "power2.out",
+            delay: 0.8, // Start slightly after text
+            onComplete: () => {
+                // Add subtle floating animation after initial load
+                gsap.to(".hero-image-container", {
+                    y: -10,
+                    repeat: -1, // Loop indefinitely
+                    yoyo: true, // Go up and down
+                    ease: "sine.inOut",
+                    duration: 3
+                });
+            }
+        });
+
+
+        // Stats Section - Scroll Triggered Fade In & Scale
+        gsap.utils.toArray(".stat-item").forEach((item, i) => {
+            gsap.from(item, {
+                opacity: 0,
+                y: 50,
+                scale: 0.9,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 85%", // When item is 85% from top of viewport
+                    toggleActions: "play none none none", // Play once
+                    once: true // Only animate once
+                },
+                delay: i * 0.15 // Stagger for each stat item
+            });
+        });
+
+    </script>
+</body>
+</html>
