@@ -232,9 +232,9 @@ header {
     background-image: linear-gradient(45deg, var(--secondary-color) 0%, var(--primary-color) 100%);
 }
 
-/* Hero Section */
+/* Hero Section (General) */
 .hero-section {
-    padding-top: 100px;
+    padding-top: 80px; /* Adjusted: Reduced top padding for "above the fold" */
     padding-bottom: 120px;
     background-color: transparent;
     position: relative;
@@ -286,11 +286,11 @@ header {
     margin-bottom: 0;
 }
 
-/* NEW SECTION: Principles Section Styling */
+/* Principles Section (Used for box styling) */
 .principles-section {
     background-color: var(--card-background);
     padding: 80px 0;
-    margin-bottom: 100px;
+    margin-bottom: 100px; /* Space below the box */
     border-radius: 15px;
     box-shadow: 0 10px 30px var(--shadow-medium);
     margin-left: auto;
@@ -312,7 +312,7 @@ header {
 .principles-content {
     max-width: 800px;
     margin: 0 auto;
-    text-align: left; /* **Changed: Left align principles text** */
+    text-align: left;
 }
 
 .principles-paragraph {
@@ -328,7 +328,7 @@ header {
 }
 
 
-/* Objectives Section */
+/* Objectives Section (Not directly used for mission boxes anymore, retains its purpose) */
 .objectives-section {
     padding: 80px 0;
     background-color: var(--background-light);
@@ -400,13 +400,115 @@ header {
     font-weight: 500;
 }
 
+/* --- New & Adjusted Styles for Mission Page --- */
+
+/* Mission Page Hero Section */
+.mission-hero-section {
+    padding-top: 80px; /* Adjusted: Consistent with main hero for 'above the fold' */
+    padding-bottom: 80px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.mission-hero-section .hero-text-block {
+    max-width: 800px;
+}
+
+.mission-hero-section .mission-page-main-header { /* New class for the main page header */
+    font-size: 58px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+}
+
+.mission-hero-section .mission-sub-header {
+    font-size: 22px;
+    color: var(--dark-text);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+/* Mission Content Boxes (now explicitly using principles-section-like styles) */
+.mission-content-box {
+    background-color: var(--card-background);
+    padding: 80px 0;
+    margin-bottom: 100px; /* Consistent space between boxes and from bottom */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    width: 90%;
+    /* No transform/opacity here as GSAP will handle it */
+}
+
+.mission-content-box .container {
+    /* Ensures content inside the box adheres to the container width */
+}
+
+
+.mission-text-block {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.mission-text-block p {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.mission-text-block p:last-child {
+    margin-bottom: 0;
+}
+
+.section-part-title { /* Used for titles within the content boxes */
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* List styling for the bullet points in the second part */
+.mission-text-block ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+.mission-text-block ul li {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+.mission-text-block ul li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: inherit;
+    font-weight: bold;
+}
+
 
 /* Media Queries for Responsiveness */
 
 /* Large Tablets and Laptops (1024px) */
 @media (max-width: 1024px) {
     .hero-section {
-        padding-top: 80px;
+        padding-top: 60px; /* Adjusted for smaller screens too */
         padding-bottom: 100px;
     }
     .hero-text-block h1 {
@@ -457,23 +559,45 @@ header {
     .objective-text {
         font-size: 17px;
     }
+
+    /* Mission Page specific responsiveness */
+    .mission-hero-section {
+        padding-top: 60px; /* Adjusted for smaller screens too */
+        padding-bottom: 60px;
+    }
+    .mission-hero-section .mission-page-main-header { /* New class for the main page header */
+        font-size: 50px;
+    }
+    .mission-hero-section .mission-sub-header {
+        font-size: 20px;
+    }
+    .mission-content-box {
+        padding: 60px 0;
+        margin-bottom: 80px;
+    }
+    .section-part-title {
+        font-size: 28px;
+    }
+    .mission-text-block p, .mission-text-block ul li {
+        font-size: 17px;
+    }
 }
 
-/* Tablets (768px) - Major changes for header responsiveness */
+/* Tablets (768px) */
 @media (max-width: 768px) {
     .header-content {
-        justify-content: space-between; /* Keep logo and hamburger at ends */
+        justify-content: space-between;
         align-items: center;
     }
-    .main-nav, .desktop-btn { /* Hide desktop nav and button */
+    .main-nav, .desktop-btn {
         display: none;
     }
-    .hamburger-menu { /* Show hamburger icon */
+    .hamburger-menu {
         display: flex;
     }
 
     .hero-section {
-        padding-top: 60px;
+        padding-top: 40px; /* Adjusted for smaller screens */
         padding-bottom: 80px;
     }
     .hero-text-block h1 {
@@ -499,7 +623,7 @@ header {
         margin-bottom: 35px;
     }
     .principles-content {
-        /* No change here, remains text-align: left */
+        /* text-align: left; inherited */
     }
     .principles-paragraph {
         font-size: 16px;
@@ -531,6 +655,28 @@ header {
     .objective-text {
         font-size: 16px;
     }
+
+    /* Mission Page specific responsiveness */
+    .mission-hero-section {
+        padding-top: 40px; /* Adjusted for smaller screens */
+        padding-bottom: 40px;
+    }
+    .mission-hero-section .mission-page-main-header { /* New class for the main page header */
+        font-size: 40px;
+    }
+    .mission-hero-section .mission-sub-header {
+        font-size: 18px;
+    }
+    .mission-content-box {
+        padding: 50px 0;
+        margin-bottom: 60px;
+    }
+    .section-part-title {
+        font-size: 26px;
+    }
+    .mission-text-block p, .mission-text-block ul li {
+        font-size: 16px;
+    }
 }
 
 /* Mobile Phones (480px) */
@@ -538,10 +684,9 @@ header {
     .logo {
         font-size: 26px;
     }
-    /* Header remains hidden on these smaller sizes */
 
     .hero-section {
-        padding-top: 40px;
+        padding-top: 30px; /* Further adjusted for very small screens */
         padding-bottom: 60px;
     }
     .hero-text-block h1 {
@@ -565,6 +710,9 @@ header {
         font-size: 26px;
         margin-bottom: 25px;
     }
+    .principles-content {
+        /* text-align: left; inherited */
+    }
     .principles-paragraph {
         font-size: 15px;
         margin-bottom: 20px;
@@ -586,6 +734,28 @@ header {
         margin-bottom: 10px;
     }
     .objective-text {
+        font-size: 15px;
+    }
+
+    /* Mission Page specific responsiveness */
+    .mission-hero-section {
+        padding-top: 30px; /* Further adjusted for very small screens */
+        padding-bottom: 30px;
+    }
+    .mission-hero-section .mission-page-main-header {
+        font-size: 30px;
+    }
+    .mission-hero-section .mission-sub-header {
+        font-size: 16px;
+    }
+    .mission-content-box {
+        padding: 40px 0;
+        margin-bottom: 40px;
+    }
+    .section-part-title {
+        font-size: 22px;
+    }
+    .mission-text-block p, .mission-text-block ul li {
         font-size: 15px;
     }
 }
