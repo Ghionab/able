@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABLE Partners</title> <link rel="stylesheet" href="style.css">
+    <title>ABLE Partners</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -11,15 +12,18 @@
 <body class="animated-background">
     <header>
         <div class="container header-content">
-            <div class="logo">ABLE partners</div> <nav class="main-nav">
+            <div class="logo">ABLE partners</div>
+            <nav class="main-nav">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mission.html">Mission S-B-S</a></li>
                     <li><a href="#">Projects</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
             </nav>
-            <button class="btn primary-btn desktop-btn">Contact Us</button> <div class="hamburger-menu" id="hamburger-icon"> <div class="bar"></div>
+            <button class="btn primary-btn desktop-btn">Contact Us</button>
+            <div class="hamburger-menu" id="hamburger-icon">
+                <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
             </div>
@@ -28,8 +32,8 @@
 
     <nav class="mobile-nav-overlay" id="mobile-nav">
         <ul>
-            <li><a href="#" class="mobile-nav-link">Home</a></li>
-            <li><a href="#" class="mobile-nav-link">Our Mission</a></li>
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="mission.html" class="mobile-nav-link">Mission S-B-S</a></li>
             <li><a href="#" class="mobile-nav-link">Projects</a></li>
             <li><a href="#" class="mobile-nav-link">About</a></li>
             <li><button class="btn primary-btn mobile-contact-btn">Contact Us</button></li>
@@ -43,7 +47,8 @@
                     <h1>
                         <span class="word-reveal">Teaming up</span>
                         <span class="word-reveal">to create</span>
-                        <span class="word-reveal">a better</span> <span class="word-reveal">future</span>
+                        <span class="word-reveal">a better</span>
+                        <span class="word-reveal">future</span>
                     </h1>
                     <p class="fade-in-on-load">The ABLE partnership is a collaborative alliance founded on mutual growth,
                         continuous learning, and open communication.</p>
@@ -72,6 +77,7 @@
                 </div>
             </div>
         </section>
+
         <section class="objectives-section">
             <div class="container">
                 <h2 class="objectives-heading">Our projects pursue three core objectives:</h2>
@@ -94,7 +100,8 @@
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
                         </span>
-                        <span class="objective-text">Equitable income sharing with contributors, especially those dependent on the gig economy.</span> </li>
+                        <span class="objective-text">Equitable income sharing with contributors, especially those dependent on the gig economy.</span>
+                    </li>
                     <li class="objective-item">
                         <span class="objective-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-leaf">
@@ -108,14 +115,14 @@
                 </ul>
             </div>
         </section>
-        </main>
+
+    </main>
 
     <script>
-        // GSAP Animations (JavaScript)
         gsap.registerPlugin(ScrollTrigger);
 
         // Hero Heading Word Reveal
-        gsap.from(".word-reveal", {
+        gsap.from(".hero-section .word-reveal", {
             y: 50,
             opacity: 0,
             duration: 0.8,
@@ -125,7 +132,7 @@
         });
 
         // Hero Paragraph & Button Fade In
-        gsap.from(".hero-text-block .fade-in-on-load", {
+        gsap.from(".hero-section .fade-in-on-load", {
             opacity: 0,
             y: 20,
             duration: 1,
@@ -197,12 +204,11 @@
         // Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger-icon');
         const mobileNav = document.getElementById('mobile-nav');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-contact-btn'); // Select all links and the contact button
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-contact-btn');
 
         function toggleMobileNav() {
             mobileNav.classList.toggle('open');
-            hamburger.classList.toggle('active'); // Add active class for animation
-            // Disable scroll when menu is open
+            hamburger.classList.toggle('active');
             if (mobileNav.classList.contains('open')) {
                 document.body.style.overflowY = 'hidden';
             } else {
@@ -212,10 +218,9 @@
 
         hamburger.addEventListener('click', toggleMobileNav);
 
-        // Close mobile nav when a link is clicked
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (mobileNav.classList.contains('open')) { // Only close if it's open
+                if (mobileNav.classList.contains('open')) {
                     toggleMobileNav();
                 }
             });
